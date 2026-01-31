@@ -34,3 +34,5 @@ build/
 # These are necessary for installing dependencies
 package.json
 package-lock.json
+.vercel
+.env*.local
