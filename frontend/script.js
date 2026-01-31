@@ -1,4 +1,4 @@
-const apiUrl = "https://fenmo-technical-assessment-1.onrender.com/api/expenses"; 
+const apiUrl = "https://fenmo-technical-assessment-1.onrender.com/expenses"; 
 
 const form = document.getElementById("expense-form");
 const tableBody = document.getElementById("expenses-table");
