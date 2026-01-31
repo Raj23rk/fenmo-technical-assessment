@@ -1,4 +1,4 @@
-const apiUrl = "/api/expenses"; // ✅ Use relative path
+const apiUrl = "https://fenmo-technical-assessment-1.onrender.com/expenses"; 
 
 const form = document.getElementById("expense-form");
 const tableBody = document.getElementById("expenses-table");
