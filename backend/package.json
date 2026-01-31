@@ -7,10 +7,9 @@
     "start": "node src/app.js"
   },
   "dependencies": {
-    "express": "^5.2.1",
-    "serverless-http": "^2.8.0",
-    "uuid": "^13.0.0",
+    "body-parser": "^2.2.2",
     "cors": "^2.8.6",
-    "body-parser": "^2.2.2"
+    "express": "^5.2.1",
+    "uuid": "^13.0.0"
   }
 }
