@@ -1,0 +1,36 @@
+# Node.js dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# SQLite database (optional: include sample DB if needed)
+*.db
+*.sqlite
+*.sqlite3
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Vercel build output (optional)
+.vercel/
+
+# IDE / Editor files
+.vscode/
+.idea/
+
+# Optional: local build folders
+dist/
+build/
+
+# Keep package.json and package-lock.json
+# These are necessary for installing dependencies
+package.json
+package-lock.json

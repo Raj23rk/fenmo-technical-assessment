@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Expense Tracker</h1>
+
+    <!-- Expense Form -->
+    <form id="expense-form">
+      <input type="number" step="0.01" placeholder="Amount" id="amount" required>
+      <input type="text" placeholder="Category" id="category" required>
+      <input type="text" placeholder="Description" id="description">
+      <input type="date" id="date" required>
+      <button type="submit">Add Expense</button>
+    </form>
+
+    <!-- Filter & Sort Controls -->
+    <div class="controls">
+      <label>Filter by category: <input type="text" id="filter-category"></label>
+      <button id="filter-btn">Filter</button>
+      <button id="sort-btn">Sort by newest</button>
+    </div>
+
+    <!-- Total -->
+    <h2>Total: ₹<span id="total">0</span></h2>
+
+    <!-- Expenses Table -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody id="expenses-table"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
