@@ -1,4 +1,4 @@
-const apiUrl = "http://localhost:3000/expenses";
+const apiUrl = "/api/expenses"; // ✅ Use relative path
 
 const form = document.getElementById("expense-form");
 const tableBody = document.getElementById("expenses-table");
@@ -9,31 +9,36 @@ const sortBtn = document.getElementById("sort-btn");
 
 let sortNewest = false;
 
-// Fetch and render expenses
 async function loadExpenses() {
-  let url = apiUrl;
-  const category = filterInput.value.trim();
-  const params = [];
-  if (category) params.push(`category=${category}`);
-  if (sortNewest) params.push(`sort=date_desc`);
-  if (params.length) url += "?" + params.join("&");
+  try {
+    let url = apiUrl;
+    const category = filterInput.value.trim();
+    const params = [];
+    if (category) params.push(`category=${category}`);
+    if (sortNewest) params.push(`sort=date_desc`);
+    if (params.length) url += "?" + params.join("&");
 
-  const res = await fetch(url);
-  const data = await res.json();
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`API error: ${res.status}`);
+    const data = await res.json();
 
-  tableBody.innerHTML = "";
-  data.expenses.forEach(exp => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${exp.date}</td>
-      <td>${exp.category}</td>
-      <td>${exp.description}</td>
-      <td>₹${exp.amount / 100}</td>
-    `;
-    tableBody.appendChild(tr);
-  });
+    tableBody.innerHTML = "";
+    data.expenses.forEach(exp => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${exp.date}</td>
+        <td>${exp.category}</td>
+        <td>${exp.description}</td>
+        <td>₹${exp.amount / 100}</td>
+      `;
+      tableBody.appendChild(tr);
+    });
 
-  totalEl.textContent = data.total.toFixed(2);
+    totalEl.textContent = data.total / 100; // total in rupees
+  } catch (err) {
+    console.error(err);
+    tableBody.innerHTML = "<tr><td colspan='4'>Failed to load expenses</td></tr>";
+  }
 }
 
 // Handle form submit
@@ -56,10 +61,8 @@ form.addEventListener("submit", async e => {
   loadExpenses();
 });
 
-// Filter button
+// Filter and sort
 filterBtn.addEventListener("click", loadExpenses);
-
-// Sort button
 sortBtn.addEventListener("click", () => {
   sortNewest = !sortNewest;
   loadExpenses();
